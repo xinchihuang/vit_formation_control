@@ -1,7 +1,7 @@
 import os
 import sys
-sys.path.append("/home/xinchi/catkin_ws/src/multi_robot_formation/src")
-sys.path.append("/home/xinchi/catkin_ws/src/multi_robot_formation/src/multi_robot_formation")
+sys.path.append("/home/xinchi/catkin_ws/src/vit_formation_control/src")
+sys.path.append("/home/xinchi/catkin_ws/src/vit_formation_control/src/multi_robot_formation")
 print(sys.path)
 import numpy as np
 import math

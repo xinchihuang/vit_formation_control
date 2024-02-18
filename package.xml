@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>multi_robot_formation</name>
+  <name>vit_formation_control</name>
   <version>0.0.0</version>
   <description>The multi_robot_formation package</description>
 

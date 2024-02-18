@@ -1,8 +1,6 @@
 # import os
 # import sys
-# sys.path.append("/home/xinchi/catkin_ws/src/multi_robot_formation/src")
-# sys.path.append("/home/xinchi/catkin_ws/src/multi_robot_formation/src/multi_robot_formation")
-# sys.path.append("/home/xinchi/catkin_ws/src/multi_robot_formation/src/multi_robot_formation/model")
+
 #
 # print(sys.path)
 import torch
