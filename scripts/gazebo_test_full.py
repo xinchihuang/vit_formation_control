@@ -159,7 +159,9 @@ class Simulation:
 
 
 if __name__ == "__main__":
-    robot_num =13
+    rospy.init_node("gazebo_test")
+    robot_num = rospy.get_param('~robot_num', 5)
+    # robot_num =5
 
     # initial_pose="/home/xinchi/catkin_ws/src/multi_robot_formation/scripts/utils/poses_large_9"
     # # pose_lists=initial_from_data(initial_pose)
@@ -168,48 +170,32 @@ if __name__ == "__main__":
 
     pose_list=initialize_pose(robot_num,initial_max_range=2)
     #
-    pose_list=[[0,0,0],
-               [1.5,1.5,0],
-               [-1.5,1.5,0],
-               [-1.5,-1.5,0],
-               [1.5,-1.5,0],
-               [-1.5,0,0],
-               [1.5,0,0],
-               [0,1.5,0],
-               [0,-1.5,0],
-               [3,0,0],
-               [-3,0,0],
-               [0,3,0],
-               [0,-3,0],
-               ]
+    # pose_list=[[0,0,0],
+    #            [1.3,1.3,0],
+    #            [-1.3,1.3,0],
+    #            [-1.3,-1.3,0],
+    #            [1.3,-1.3,0],]
+               # [-1.5,0,0],
+               # [1.5,0,0],]
 
 
     rospy.wait_for_service('/gazebo/set_model_state')
     set_state = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
-    rospy.init_node("collect_data")
 
+    print(os.getcwd())
     ### Vit controller
-    model_path="/home/xinchi/catkin_ws/src/multi_robot_formation/scripts/saved_model/vit_final.pth"
-    save_data_root="/home/xinchi/gazebo_data/ViT_demo"
+    model_path="saved_model/vit_final.pth"
+    save_data_root="/home/xinchi/gazebo_data"
     map_size = 100
     controller=VitController(model_path,input_width=map_size,input_height=map_size)
     # controller=LocalExpertControllerHeuristic()
     print(controller.name)
 
-    #
     # desired_distance = 1.0
     # sensor_range=2
     # K_f=1
     # max_speed = 1
     # controller = LocalExpertControllerFull(desired_distance=desired_distance,sensor_range=sensor_range,K_f=K_f,max_speed=max_speed)
-
- #
- #    pose_list=[[-1.8344854  ,-2.54902913  ,1.31531797],
- # [-0.11962687 ,-2.94522615 ,-2.78613711],
- # [-4.51360495  ,1.04370626  ,0.72373201],
- # [ 0.34727331  ,1.90429804 ,-1.54858546],
- # [-2.34736724  ,2.89713682 ,-1.14321162]]
-
 
     sensor_range=2
     sensor_view_angle = math.pi * 2

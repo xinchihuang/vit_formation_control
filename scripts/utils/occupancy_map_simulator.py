@@ -6,7 +6,7 @@ author: Xinchi Huang
 import math
 import numpy as np
 import cv2
-from gabreil_graph import is_valid_point,global_to_local
+from .gabreil_graph import is_valid_point,global_to_local
 
 class MapSimulator:
     def __init__(

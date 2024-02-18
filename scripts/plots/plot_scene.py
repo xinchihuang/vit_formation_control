@@ -4,9 +4,7 @@ author: Xinchi Huang
 """
 
 import os
-import sys
 
-print(os.getcwd())
 import os
 import math
 import itertools
@@ -14,7 +12,7 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import numpy as np
 # from LocalExpertController import LocalExpertController
-from utils.gabreil_graph import get_gabreil_graph
+from scripts.utils.gabreil_graph import get_gabreil_graph
 import matplotlib.ticker as ticker
 
 def gabriel(pose_array):
@@ -145,16 +143,16 @@ def plot_relative_distance_gabreil(dt, pose_array, save_path='',sensor_range=2):
     for key, _ in distance_dict.items():
         plt.plot(xlist, distance_dict[key], label=key,linewidth=5)
     # plt.legend()
-    plt.subplots_adjust(left=0.05,
+    plt.subplots_adjust(left=0.18,
                         bottom=0.18,
                         right=0.98,
                         top=0.98,
                         wspace=0.0,
                         hspace=0.0)
-    plt.xlabel("time(s)", fontsize=30)
-    plt.ylabel("distance(m)", fontsize=30)
-    plt.xticks(fontsize=30)
-    plt.yticks(fontsize=30)
+    plt.xlabel("time(s)", fontsize=35)
+    plt.ylabel("distance(m)", fontsize=35)
+    plt.xticks(fontsize=35)
+    plt.yticks(fontsize=35)
     plt.grid()
     plt.savefig(os.path.join(save_path, "relative_distance_gabreil_" + str(rob_num) + ".png"), pad_inches=0.0)
     plt.close()
@@ -189,7 +187,7 @@ def plot_relative_distance_gabreil_real(dt, pose_array, save_path='',sensor_rang
         plt.plot(xlist, distance_dict[key], label=key,linewidth=5)
     # plt.legend()
     plt.ylim(0,3)
-    plt.subplots_adjust(left=0.13,
+    plt.subplots_adjust(left=0.15,
                         bottom=0.16,
                         right=0.98,
                         top=0.95,
@@ -335,7 +333,7 @@ def plot_triangle(ax,pos,theta,length,color):
     ax.plot([p1[0],p2[0]],[p1[1],p2[1]],color=color,linewidth=4)
     ax.plot([p2[0],p3[0]],[p2[1],p3[1]],color=color,linewidth=4)
     ax.plot([p3[0],p1[0]],[p3[1],p1[1]],color=color,linewidth=4)
-def plot_trace_triangle(pose_array,save_path='',time_step=1000,xlim=8,ylim=8,sensor_range=2):
+def plot_trace_triangle(pose_array,save_path='',time_step=1000,xlim=2.5,ylim=2.5,sensor_range=2):
     rob_num = np.shape(pose_array)[0]
     colors = itertools.cycle(mcolors.TABLEAU_COLORS)
     fig,ax=plt.subplots(figsize=(10, 10))
@@ -343,7 +341,7 @@ def plot_trace_triangle(pose_array,save_path='',time_step=1000,xlim=8,ylim=8,sen
         color = next(colors)
         xtrace = []
         ytrace = []
-        for p in range(0,time_step-1,500):
+        for p in range(0,time_step+1,200):
             pos=[pose_array[i][p][0],pose_array[i][p][1]]
             theta=pose_array[i][p][2]
             plot_triangle(ax, pos,theta, 0.1, color)
@@ -480,8 +478,8 @@ def plot_load_data_gazebo(root_dir,desired_distance=1,sensor_range=2,dt=0.05):
     position_array=np.transpose(position_array,(1,0,2))
     # plot_relative_distance(dt, position_array, root_dir)
     plot_relative_distance_gabreil(dt, position_array, root_dir, sensor_range=sensor_range)
-    plot_formation_gabreil(position_array, root_dir,desired_distance=desired_distance,sensor_range=sensor_range)
-    plot_trace_triangle(position_array,root_dir,sensor_range=sensor_range)
+    # plot_formation_gabreil(position_array, root_dir,desired_distance=desired_distance,sensor_range=sensor_range)
+    # plot_trace_triangle(position_array,root_dir,sensor_range=sensor_range)
 
 def plot_load_data_multi_fromation(root_dir, desired_distance=1, sensor_range=2, num_graph=4):
         """
@@ -505,9 +503,9 @@ def plot_load_data_multi_fromation(root_dir, desired_distance=1, sensor_range=2,
 #
 if __name__ == "__main__":
 
-    # plot_load_data_gazebo("/home/xinchi/gazebo_data/ViT_5_full/70")
-    root_path="C:\\Users\\huang xinchi\\Desktop\\multi_robot_formation\\scripts\\plots"
-    for path in os.listdir(root_path):
-        plot_load_data_multi_fromation(os.path.join(root_path,path),desired_distance=1.1,sensor_range=2,num_graph=4)
+    plot_load_data_gazebo("/home/xinchi/gazebo_data/ViT_demo/13")
+    # root_path="C:\\Users\\huang xinchi\\Desktop\\multi_robot_formation\\scripts\\plots"
+    # for path in os.listdir(root_path):
+    #     plot_load_data_multi_fromation(os.path.join(root_path,path),desired_distance=1.1,sensor_range=2,num_graph=4)
     # trace_array=np.load("/home/xinchi/gazebo_data/0/trace.npy")
     # print(trace_array.shape)

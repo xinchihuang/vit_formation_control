@@ -214,11 +214,13 @@ class Trainer:
 
 
 if __name__ == "__main__":
+
+
     torch.cuda.memory_summary(device=None, abbreviated=False)
     torch.cuda.empty_cache()
     # global parameters
-    data_path_list = ["/home/xinchi/gazebo_data/expert","/home/xinchi/gazebo_data/random"]
-    save_model_path = "/home/xinchi/vit_100/vit.pth"
+    data_path_list = ["training_data/expert","training_data/random"]
+    save_model_path = "vit.pth"
     desired_distance = 1.0
     number_of_robot =7
     robot_size=0.1
@@ -288,7 +290,6 @@ if __name__ == "__main__":
         use_cuda=use_cuda,
         task_type=task_type,
     )
-    print(T)
     T.train()
 
 

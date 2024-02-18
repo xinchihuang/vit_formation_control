@@ -2,7 +2,7 @@
 <package format="2">
   <name>vit_formation_control</name>
   <version>0.0.0</version>
-  <description>The multi_robot_formation package</description>
+  <description>The vit_formation_control package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->

@@ -1,6 +1,33 @@
 <launch>
-
-  <node name="gazebo_test" pkg="vit_formation_control" type="gazebo_test.py" cwd="node">
-
-  </node>
+    <arg name="robot_num" default="5"/>
+    <group if="$(eval robot_num == 5)">
+         <include file="$(find robomaster_description)/launch/robomaster_gazebo_5.launch"></include>
+         <node name="gazebo_test_full" pkg="vit_formation_control" type="gazebo_test_full.py" cwd="node">
+         <param name="robot_num" value="$(arg robot_num)"/>
+         </node>
+    </group>
+    <group if="$(eval robot_num == 7)">
+         <include file="$(find robomaster_description)/launch/robomaster_gazebo_7.launch"></include>
+         <node name="gazebo_test_full" pkg="vit_formation_control" type="gazebo_test_full.py" cwd="node">
+         <param name="robot_num" value="$(arg robot_num)"/>
+         </node>
+    </group>
+    <group if="$(eval robot_num == 9)">
+         <include file="$(find robomaster_description)/launch/robomaster_gazebo_9.launch"></include>
+         <node name="gazebo_test_full" pkg="vit_formation_control" type="gazebo_test_full.py" cwd="node">
+         <param name="robot_num" value="$(arg robot_num)"/>
+         </node>
+    </group>
+    <group if="$(eval robot_num == 11)">
+         <include file="$(find robomaster_description)/launch/robomaster_gazebo_11.launch"></include>
+         <node name="gazebo_test_full" pkg="vit_formation_control" type="gazebo_test_full.py" cwd="node">
+         <param name="robot_num" value="$(arg robot_num)"/>
+         </node>
+    </group>
+    <group if="$(eval robot_num == 13)">
+         <include file="$(find robomaster_description)/launch/robomaster_gazebo_13.launch"></include>
+         <node name="gazebo_test_full" pkg="vit_formation_control" type="gazebo_test_full.py" cwd="node">
+         <param name="robot_num" value="$(arg robot_num)"/>
+         </node>
+    </group>
 </launch>
