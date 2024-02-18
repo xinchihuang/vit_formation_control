@@ -1,0 +1,8 @@
+#/doc
+~*
+/saved_data
+
+
+
+# Project exclude paths
+/venv/
