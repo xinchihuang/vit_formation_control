@@ -1,4 +1,8 @@
 # Learning Decentralized Formation Using Transformer codes
+
+![model structure](robot structure 2.png "model structure")
+
+
 ## System requirement
 1. Ubuntu 20.04
 2. ROS noetic
