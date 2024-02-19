@@ -1,6 +1,6 @@
 # Learning Decentralized Formation Using Transformer codes
 
-![model structure](robot structure 2.png "model structure")
+![model structure](robot%20structure%202.png "model structure")
 
 
 ## System requirement
