@@ -145,20 +145,10 @@ class ModelControl:
         #     print(f"Component {component_number}: {count} '1's")
         occupancy_map = occupancy_map*255
         point_map = point_map*255
-        # cv2.imshow("robot view " + str(0), np.array(occupancy_map))
-        # cv2.waitKey(1)
-        # cv2.imshow("raw" + str(0), point_map)
-        # cv2.waitKey(1)
-        # cv2.imwrite("/home/xinchi/raw.png",point_map)
-        # cv2.imwrite("/home/xinchi/map.png", occupancy_map)
         data = {"robot_id": 0, "occupancy_map": occupancy_map}
         control_data = self.controller.get_control(data)
         #
         self.executor.execute_control(control_data=control_data)
-        # time.sleep(0.2)
-        # control_data.velocity_x=0
-        # control_data.velocity_y=0
-        # self.executor.execute_control(control_data=control_data)
     def keyboard_stop(self):
         if data.data == 'q':
             self.robot.executor.stop()

@@ -1,23 +1,24 @@
 # Learning Decentralized Formation Using Transformer codes
 ## System requirement
 1. Ubuntu 20.04
-2. ROS melodic
+2. ROS noetic
 
 ## Dependency
 1. Get the simulation environment at:
 
-   https://github.com/SIT-Robotics-and-Automation-Laboratory/robomaster_description.git
+   [A simple platform for multi-robot control with ROS](https://github.com/SIT-Robotics-and-Automation-Laboratory/robomaster_description.git)
+ and place it under your working space.
 2. Install dependent python packages by run:
 
    `pip install -r requirements.txt`
 ## Validation with pretrained model and 7 robots in gazebo simulator
    Start the simulation environment  and testing by run
 
-   `roslaunch robomaster_description robomaster_gazebo.launch`
+   `roslaunch vit_formation_control robomaster_gazebo.launch`
    
    You can change the number of robots for testing by change the parameter robot_num i.e 13 robots:
    
-   `roslaunch robomaster_description robomaster_gazebo.launch robot_num:=13`
+   `roslaunch vit_formation_control robomaster_gazebo.launch robot_num:=13`
 
    Above code will start the simulation environment and load the pretrained model for testing. The simulation run will last for 50 seconds
 

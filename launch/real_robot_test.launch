@@ -1,0 +1,6 @@
+<launch>
+     <include file="$(find ldlidar_sl_ros/launch/ld14p.launch"></include>
+     <node name="gazebo_test_full" pkg="vit_formation_control" type="model_control_liar.py" cwd="node">
+     <param name="robot_num" value="$(arg robot_num)"/>
+     </node>
+</launch>

@@ -75,7 +75,6 @@ class ControlPublisher():
         elif self.count == 4:
             self.count = 4
             message = "6:[0,0];"
-        print(message)
         broadcast_address = ('<broadcast>', 12345)
         self.udp_socket.sendto(message.encode(), broadcast_address)
         time.sleep(10)
@@ -98,18 +97,14 @@ class ControlRec():
 
 
 if __name__ == "__main__":
-    # 启动发送广播消息的线程
     controller=ControlPublisher()
     # receiver=ControlRec()
     while True:
         sender_thread = threading.Thread(target=controller.send_keyboard_message)
         sender_thread.start()
-
-        # 启动接收广播回应的线程
         # receiver_thread = threading.Thread(target=receiver.receive_broadcast_response)
         # receiver_thread.start()
 
-        # 等待两个线程完成
         sender_thread.join()
         # receiver_thread.join()
         # time.sleep(0.4)
